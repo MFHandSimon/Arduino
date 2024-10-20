@@ -1,5 +1,7 @@
 const int l = 13, c = 14, d = 15;
-int keyVal, keyPin, preKeyVal, nowTime, oldtime, settime = 20, preKeyState;
+int keyVal, keyPin = 2, preKeyVal, nowTime, oldtime, settime = 20, preKeyState;
+int number, first_time;
+bool keyFlag = false;
 const byte num[11] = {
   //  abcdefg.
   0b11111100,         //0
@@ -33,13 +35,15 @@ void setup() {
 
 
 void loop() {
-  superdisplay(1234);
+  getKeyState();
+  if (keyFlag) {
+    first_time = millis();
+
+  } else {
+    superdisplay(millis() - first_time);
+    first_time = millis();
+  }
 }
-
-
-
-
-
 
 
 
@@ -56,8 +60,7 @@ void _display(int digit, int number) {
 
 //消抖
 void getKeyState() {
-  bool keyFlag = 0;
-  keyVal = digitalRead(keyPin);
+  keyVal = digitalRead(!keyPin);    //反向
   if (keyVal != preKeyVal) {
     nowTime = millis();
   }
@@ -74,7 +77,8 @@ void getKeyState() {
   }
 }
 
-void supersiaplay(int number) {
+//显示
+void superdisplay(int number) {
   int _superdisplay[4] {};
   _superdisplay[1] = number / 1000;
   _superdisplay[2] = number / 100 % 10;
