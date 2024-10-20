@@ -1,3 +1,4 @@
+// new
 const int l = 13, c = 14, d = 15;
 int keyVal, keyPin = 2, preKeyVal, nowTime, oldtime, settime = 20, preKeyState;
 int number, first_time, _num;
@@ -64,7 +65,7 @@ void _display(int digit, int number) {
 
 //消抖
 void getKeyState() {
-  keyVal = digitalRead(keyPin);    
+  keyVal = digitalRead(keyPin);    //反向
   if (keyVal != preKeyVal) {
     nowTime = millis();
   }
