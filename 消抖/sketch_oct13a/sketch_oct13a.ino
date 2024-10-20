@@ -1,3 +1,5 @@
+// int keyVal, keyPin, preKeyVal, nowTime, oldtime, settime = 20, preKeyState;      把我放到第一行
+
 //消抖
 void getKeyState() {
   keyVal = digitalRead(keyPin);
