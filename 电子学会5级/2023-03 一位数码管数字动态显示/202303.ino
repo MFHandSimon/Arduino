@@ -24,7 +24,7 @@ void setup() {
 }
 
 void loop() {
-  if (!touch) {
+  if (!touch) {     高级用法 也可以写中断回调函数
     touchSw();
   }
   int dispData = 0b11111111;
